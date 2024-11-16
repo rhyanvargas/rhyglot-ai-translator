@@ -6,6 +6,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Textarea } from "@/components/ui/textarea";
+import Image from "next/image";
 
 interface TranslationResponse {
 	translation: string;
@@ -14,7 +15,7 @@ interface TranslationResponse {
 
 export default function Component() {
 	const [text, setText] = useState("");
-	const [language, setLanguage] = useState("french");
+	const [language, setLanguage] = useState("filipino");
 	const [translation, setTranslation] = useState("");
 	const [loading, setLoading] = useState(false);
 
@@ -50,13 +51,19 @@ export default function Component() {
 	return (
 		<div className="min-h-screen bg-slate-950 flex flex-col items-center justify-center p-4">
 			<div className="w-full max-w-md">
-				<div className="w-[400px] h-[150px] bg-gray-200 rounded-lg flex items-center justify-center text-gray-500">
-					Placeholder
+				<div className="w-full h-[150px] relative overflow-hidden rounded-lg">
+					<Image
+						src="/banner.png"
+						alt="AI Translator Banner"
+						fill
+						className="object-cover"
+						priority
+					/>
 				</div>
 				<Card className="rounded-t-none">
 					<CardContent className="space-y-4 pt-6">
 						<div className="space-y-2">
-							<Label className="text-lg font-semibold text-blue-600">
+							<Label className="text-lg font-semibold text-white mix-blend-difference">
 								Text to translate ⚡
 							</Label>
 							<Textarea
@@ -68,7 +75,7 @@ export default function Component() {
 						</div>
 
 						<div className="space-y-2">
-							<Label className="text-lg font-semibold text-blue-600">
+							<Label className="text-lg font-semibold text-white mix-blend-difference">
 								Select language ⚡
 							</Label>
 							<RadioGroup
@@ -77,9 +84,15 @@ export default function Component() {
 								className="space-y-2"
 							>
 								<div className="flex items-center space-x-2">
+									<RadioGroupItem value="filipino" id="filipino" />
+									<Label htmlFor="filipino" className="flex items-center gap-2">
+										Filipino <span className="text-xl">🇵🇭</span>
+									</Label>
+								</div>
+								<div className="flex items-center space-x-2">
 									<RadioGroupItem value="french" id="french" />
 									<Label htmlFor="french" className="flex items-center gap-2">
-										French <span className="text-xl">🇫🇷</span>
+										French<span className="text-xl">🇫🇷</span>
 									</Label>
 								</div>
 								<div className="flex items-center space-x-2">
@@ -88,18 +101,12 @@ export default function Component() {
 										Spanish <span className="text-xl">🇪🇸</span>
 									</Label>
 								</div>
-								<div className="flex items-center space-x-2">
-									<RadioGroupItem value="japanese" id="japanese" />
-									<Label htmlFor="japanese" className="flex items-center gap-2">
-										Japanese <span className="text-xl">🇯🇵</span>
-									</Label>
-								</div>
 							</RadioGroup>
 						</div>
 
 						{translation && (
 							<div className="space-y-2">
-								<Label className="text-lg font-semibold text-blue-600">
+								<Label className="text-lg font-semibold text-white mix-blend-difference">
 									Translation
 								</Label>
 								<div className="p-4 rounded-lg bg-slate-100 min-h-[100px]">
@@ -109,7 +116,7 @@ export default function Component() {
 						)}
 
 						<Button
-							className="w-full bg-blue-600 hover:bg-blue-700 text-lg py-6"
+							className="w-full bg-primary hover:bg-primary/90 text-lg py-6"
 							onClick={handleTranslation}
 							disabled={!text || loading}
 						>

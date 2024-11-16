@@ -1,4 +1,8 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# RhyGlot: AI Translation App
+
+![RhyGlot AI Translation App](public/banner.png)
+_
+Design: https://www.figma.com/design/tSPwztBnyTSnINlsxctpp0/OpenAi-API---RhyGlot-(Copy)?node-id=0-1&t=vdMsFVtZ9mFAW0Se-1_
 
 ## Getting Started
 
